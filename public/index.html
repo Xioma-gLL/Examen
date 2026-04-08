@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="page">
+        <section class="panel hero">
+            <h1>Gestion de Productos</h1>
+            <p>Aplicacion CRUD con Node.js, Express y MongoDB.</p>
+        </section>
+
+        <section class="panel">
+            <h2 id="form-title">Registrar producto</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+
+                <div class="fields-grid">
+                    <label class="field">
+                        <span>Nombre</span>
+                        <input id="nombre" name="nombre" type="text" minlength="2" maxlength="120" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Categoria</span>
+                        <select id="categoria" name="categoria" required>
+                            <option value="" selected disabled>Selecciona una categoria</option>
+                            <option value="Electronica">Electronica</option>
+                            <option value="Ropa">Ropa</option>
+                            <option value="Alimentos">Alimentos</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        <span>Precio</span>
+                        <input id="precio" name="precio" type="number" min="0" step="0.01" required>
+                    </label>
+
+                    <label class="field">
+                        <span>Stock</span>
+                        <input id="stock" name="stock" type="number" min="0" step="1" required>
+                    </label>
+
+                    <label class="field full-width">
+                        <span>Descripcion</span>
+                        <textarea id="descripcion" name="descripcion" rows="3" minlength="5" maxlength="500" required></textarea>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button id="submit-btn" type="submit">Guardar producto</button>
+                    <button id="cancel-btn" type="button" class="secondary hidden">Cancelar edicion</button>
+                </div>
+            </form>
+
+            <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="panel">
+            <h2>Listado de productos</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripcion</th>
+                            <th>Categoria</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
